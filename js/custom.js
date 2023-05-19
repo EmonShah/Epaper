@@ -165,7 +165,10 @@ button.addEventListener('click', function() {
               if (textAlign) { $this.css('text-align', textAlign) };
               if (textDecoration) { $this.css('text-decoration', textDecoration) }; 
               if (floatAlign) { $this.css('float', floatAlign) }; 
-              if (bgColor) { $this.css('background-color', bgColor) };
+              if (bgColor) { $this.css('background-color', bgColor) }; 
+            
+              
+              console.log(bgColor)
               if (color) { $this.css('color', color) };
               if (borderRadius) { $this.css('border-radius', borderRadius) };
               if (fontSize) { $this.css('font-size', fontSize) };
@@ -178,9 +181,9 @@ button.addEventListener('click', function() {
         });
          
       });
+ 
+
   
-
-
 
 
 
@@ -442,7 +445,8 @@ button.addEventListener('click', function() {
     });
    
   
-  
+
+ 
       // inner Section drag drop section
        $(document).on('click', '.sha-elementBtn', function () {
         $('.box').draggable({
@@ -450,10 +454,15 @@ button.addEventListener('click', function() {
           cursor: 'move',
           start: function (event, ui) {
             $(this).addClass('dragging');
+        
+           
+                
+
           },
           stop: function (event, ui) {
             $(this).removeClass('dragging');
             $(this).css({ top: 0, left: 0 });
+         
           }
         });
       
@@ -473,16 +482,16 @@ button.addEventListener('click', function() {
             
             // Detach the dropped element from its current parent
              droppedElement.detach();
-            
-            // Append the dropped element to the new container
-            var findCls = $(this).find('.elementBtnWrap');
-            var findClsTitle = $(this).find('.sha-title');
-            if(findCls){
-              findCls.before(droppedElement);
-            } else{
+            var  mainChild = $(this).parent().attr('id');
+             if(mainChild == "capture"){
+              $(this).find('.elementBtnWrap').before(droppedElement);
+             }else{
               $(this).append(droppedElement);
-            }
-           
+             }
+            
+            // $(this).append(droppedElement);
+            $(this).find('.elementBtnWrap').before(droppedElement);
+ 
             
             // Adjust the height of the container if needed
             var boxWarpHeight = $(this).outerHeight();

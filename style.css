@@ -65,7 +65,8 @@ body {
 .shaClgBtn {
   width: 18px;
   background: red;
-  padding: 15px 30px;
+  padding: 10px 30px;
+  font-size: 25px;
   color: white;
   text-align: center;
   cursor: pointer;
