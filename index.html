@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News Post Generator</title>
+  
+ 
+
+  <script src="cndJs/jquery.js"></script>
+  <script src="cndJs/jqueryUi.js"></script>
+	<script src="cndJs/jqueryTouch.js"></script>
+  <script src="cndJs/html2canvas.js"></script>
+  <script src="cndJs/jqueryMoba.js"  ></script>
+  <script src="cndJs/html2pdf.js"></script>
+   
+ 
+
+  <link rel="stylesheet" href="style.css">
+
+   <script src="js/pdf_jpg.js"></script>
+</head>
+
+<body>
+  <div class="navigator">
+    <div class="sha-navigatorbtn">
+      <div class="shaNaviTitle">Navigator</div>
+      <div class="shaClgBtn">x</div>
+    </div>
+    <div class="navigatorWrap">
+      <div class="sha-content">Content Section
+        <span class="sha-dropdown sha-contentToggoler"><svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+            xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512"
+            x="0" y="0" viewBox="0 0 123.959 123.958" style="enable-background:new 0 0 512 512" xml:space="preserve"
+            class="">
+            <g>
+              <path
+                d="M117.979 28.017h-112c-5.3 0-8 6.4-4.2 10.2l56 56c2.3 2.3 6.1 2.3 8.401 0l56-56c3.799-3.8 1.099-10.2-4.201-10.2z"
+                fill="#000000" data-original="#000000" class=" "></path>
+            </g>
+          </svg></span>
+        <div class="sha-contentWarp">
+          <textarea name="content" id="sha-htmlContent" cols="30" rows="10" placeholder="Type you Content"></textarea>
+        </div>
+      </div>
+      <div class="sha-width">Width and Heigth
+        <span class="sha-dropdown sha-widthToggoler"><svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+            xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512"
+            x="0" y="0" viewBox="0 0 123.959 123.958" style="enable-background:new 0 0 512 512" xml:space="preserve"
+            class="">
+            <g>
+              <path
+                d="M117.979 28.017h-112c-5.3 0-8 6.4-4.2 10.2l56 56c2.3 2.3 6.1 2.3 8.401 0l56-56c3.799-3.8 1.099-10.2-4.201-10.2z"
+                fill="#000000" data-original="#000000" class=" "></path>
+            </g>
+          </svg></span>
+        <div class="sha-widthWrap">
+          <div class="sha-inputVal">
+            <label for="sha_width">Width</label>
+            <input type="text" placeholder="0px" id="sha_width">
+          </div>
+          <div class="sha-inputVal">
+            <label for="sha_width">Height</label>
+            <input type="text" placeholder="0px" id="sha_height">
+          </div>
+          <div class="sha-inputVal">
+            <label for="sha_margin">Margin</label>
+            <input type="text" placeholder="0px 0px 0px 0px" id="sha_margin">
+          </div>
+          <div class="sha-inputVal">
+            <label for="sha_padding">Padding</label>
+            <input type="text" placeholder="0px 0px 0px 0px" id="sha_padding">
+          </div>
+          <div class="sha-inputVal">
+            <label for="textIndent">Text Indent</label>
+            <input type="text" id="textIndent" placeholder="0px">
+          </div>
+        </div>
+      </div>
+      <div class="sha-aligin">Text Align
+        <span class="sha-dropdown sha-textToggoler"><svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+            xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512"
+            x="0" y="0" viewBox="0 0 123.959 123.958" style="enable-background:new 0 0 512 512" xml:space="preserve"
+            class="">
+            <g>
+              <path
+                d="M117.979 28.017h-112c-5.3 0-8 6.4-4.2 10.2l56 56c2.3 2.3 6.1 2.3 8.401 0l56-56c3.799-3.8 1.099-10.2-4.201-10.2z"
+                fill="#000000" data-original="#000000" class=" "></path>
+            </g>
+          </svg></span>
+        <div class="sha-textAlignVal">
+
+          <select id="align_select">
+            <option value="" disabled selected>Select alignment</option>
+            <option value="left">Left</option>
+            <option value="center">Center</option>
+            <option value="right">Right</option>
+            <option value="justify">justify</option>
+          </select>
+ 
+        </div>
+        <div class="sha-textAlignVal">
+          <select id="text_decoration">
+            <option value="" disabled selected>Text Decoration</option>
+            <option value="none">None</option>
+            <option value="line-through">line-through</option>
+            <option value="underline">underline</option>
+            <option value="overline">overline</option>
+          </select>
+        </div>
+        <div class="sha-textAlignVal">
+          <select id="floatAlign">
+            <option value="" disabled selected>Float</option>
+            <option value="none">None</option>
+            <option value="left">Left</option>
+            <option value="right">Right</option>
+          </select>
+        </div>
+       
+      </div>
+      <div class="sha-color">Background Color
+        <span class="sha-dropdown sha-colorToggoler"><svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+            xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512"
+            x="0" y="0" viewBox="0 0 123.959 123.958" style="enable-background:new 0 0 512 512" xml:space="preserve"
+            class="">
+            <g>
+              <path
+                d="M117.979 28.017h-112c-5.3 0-8 6.4-4.2 10.2l56 56c2.3 2.3 6.1 2.3 8.401 0l56-56c3.799-3.8 1.099-10.2-4.201-10.2z"
+                fill="#000000" data-original="#000000" class=" "></path>
+            </g>
+          </svg></span>
+        <div class="sha-colorWrap">
+          <input type="color" id="sha_bg_color" value="#ff0000" >
+          <input type="text" id="sha_border_radius" placeholder="Border Radius">
+        </div>
+      </div>
+      <div class="sha-color">Color
+        <span class="sha-dropdown sha-textColorToggoler"><svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+            xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512"
+            x="0" y="0" viewBox="0 0 123.959 123.958" style="enable-background:new 0 0 512 512" xml:space="preserve"
+            class="">
+            <g>
+              <path
+                d="M117.979 28.017h-112c-5.3 0-8 6.4-4.2 10.2l56 56c2.3 2.3 6.1 2.3 8.401 0l56-56c3.799-3.8 1.099-10.2-4.201-10.2z"
+                fill="#000000" data-original="#000000" class=" "></path>
+            </g>
+          </svg></span>
+        <div class="sha-textColorWrap">
+        
+          <input type="color" id="sha_text_color" value="#ff0000">
+        
+        </div>
+      </div>
+      <div class="sha-fontSize">Font Size
+        <span class="sha-dropdown sha-sizeToggoler"><svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+            xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512"
+            x="0" y="0" viewBox="0 0 123.959 123.958" style="enable-background:new 0 0 512 512" xml:space="preserve"
+            class="">
+            <g>
+              <path
+                d="M117.979 28.017h-112c-5.3 0-8 6.4-4.2 10.2l56 56c2.3 2.3 6.1 2.3 8.401 0l56-56c3.799-3.8 1.099-10.2-4.201-10.2z"
+                fill="#000000" data-original="#000000" class=" "></path>
+            </g>
+          </svg></span>
+        <div class="sha-fontWrap">
+          <input type="text" id="sha_fontSize" placeholder="Font Size">
+        </div>
+        <div class="sha-fontWrap">
+          <input type="text" id="sha_lineHeight" placeholder="Line Height">
+        </div>
+      </div>
+      <div class="sha-fontFamily">Font Family
+        <span class="sha-dropdown sha-familyToggoler"><svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+            xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512"
+            x="0" y="0" viewBox="0 0 123.959 123.958" style="enable-background:new 0 0 512 512" xml:space="preserve"
+            class="">
+            <g>
+              <path
+                d="M117.979 28.017h-112c-5.3 0-8 6.4-4.2 10.2l56 56c2.3 2.3 6.1 2.3 8.401 0l56-56c3.799-3.8 1.099-10.2-4.201-10.2z"
+                fill="#000000" data-original="#000000" class=""></path>
+            </g>
+          </svg></span>
+        <div class="shah-familyWrap">
+          <select name="" id="sha_gbFamily">
+            <option value="" selected disabled hidden> Global Font-Family</option>
+            <option value="Kalpurush">Kalpurush</option>
+            <option value="SolaimanLipi">SolaimanLipi</option>
+            <option value="SutonnyMJ">SutonnyMJ</option>
+          </select>
+          <select name="" id="sha_fontFamily">
+            <option value="" selected disabled hidden> Select Font-Family</option>
+            <option value="Kalpurush">Kalpurush</option>
+            <option value="SolaimanLipi">SolaimanLipi</option>
+            <option value="SutonnyMJ">SutonnyMJ</option>
+          </select>
+          <input type="number" id="sha_fontWeight" placeholder="Font Weight">
+        </div>
+      </div>
+    </div>
+    <div class="sha-formSubmit">Apply</div>
+  </div>
+
+  <div class="container">
+    <div id="sha_Content">
+      <h2 class="sha-title boxWarp">Add Title</h2>
+      <h1 class="shah-largTitle">Add Heading</h1>
+      <div id="capture">
+        <span class="columnEdit"><span class="sha-clmEdtBtn">Edit Columns</span>
+          <input type="text" id="sha_columnNumber" placeholder="1fr 1fr 1fr">
+          <input type="button" id="sha_columnBtn" value="Apply">
+        </span>
+        <div class="sha_item boxWarp">
+          <div class="sha-clmnEdit"><span class="sha-clmnEditBtn">Edit</span><input style="width:50px;"
+              id="sha_clmgNumber" type="text" placeholder="1/2"> <button class="clmnEditApply">Apply</button></div>
+        </div>
+        <div class="sha_item boxWarp">
+          <div class="sha-clmnEdit"><span class="sha-clmnEditBtn">Edit</span><input style="width:50px;"
+              id="sha_clmgNumber" type="text" placeholder="1/2"> <button class="clmnEditApply">Apply</button></div>
+        </div>
+        <div class="sha_item boxWarp">
+          <div class="sha-clmnEdit"><span class="sha-clmnEditBtn">Edit</span><input style="width:50px;"
+              id="sha_clmgNumber" type="text" placeholder="1/2"> <button class="clmnEditApply">Apply</button></div>
+        </div>
+      </div>
+    </div>
+  
+  
+    <div class="downloadBtnSection">
+      <button class="btnStyle" id="saveBtn">Save</button>
+      <button class="btnStyle" id="restoreBtn">Edit</button>
+      <button class="btnStyle" id="resetBtn">Reset</button>
+      <div class="downloadBtn">
+        <button id="btnCapture" class="dbtnStyle">Download Jpg</button>
+        <button id="pdf" class="dbtnStyle">Download Pdf</button>
+      </div>
+    </div>
+  
+  
+  </div>
+
+ <script src="js/custom.js"></script>
+</body>
+
+</html>
