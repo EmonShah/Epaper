@@ -84,8 +84,7 @@ button.addEventListener('click', function() {
         $(selector1).on('click', function () {
         
          $(selector2).toggle();
-   
-  
+    
           if ($(selector2).is(':visible')) {
             $(this).css('transform', 'rotate(0deg)');
             
@@ -107,7 +106,8 @@ button.addEventListener('click', function() {
       navigatorDropdown('.sha-familyToggoler svg', '.shah-familyWrap');
   
     
-  
+   
+      
   
       $(document).on('dblclick touchstart', 'p, img, h1, h2, .sha-divider, .sha_draggable, .sha_htmlContent', function () {
         var $this = $(this);
@@ -142,9 +142,9 @@ button.addEventListener('click', function() {
             var textDecoration = $('#text_decoration').val() || ''; 
             var floatAlign = $('#floatAlign').val() || ''; 
             var bgColor = $('#sha_bg_color').val() || '';
-            if(bgColor == '#000000')  bgColor = '';
+             
             var color = $('#sha_text_color').val() || '';
-            if(color == '#000000') color = '';
+      
             var borderRadius = $('#sha_border_radius').val() || '';
             var fontSize = $('#sha_fontSize').val() || '';
             var lineHeight = $('#sha_lineHeight').val() || '';
@@ -176,8 +176,14 @@ button.addEventListener('click', function() {
             }
           }
         });
+         
       });
   
+
+
+
+
+
       $(document).on('click', '.shaClgBtn', '#saveBtn', function () {
         $('p.select, img.select, h1.select, h2.select, span.select, div').removeClass('select');
         $(':input').val('');
