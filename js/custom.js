@@ -477,21 +477,19 @@ button.addEventListener('click', function() {
 
  
       // inner Section drag drop section
-       $(document).on('click', '.sha-elementBtn', function () {
+       $(document).on('click touchstart', '.sha-elementBtn', function () {
         $('.box').draggable({
           revert: 'invalid',
           cursor: 'move',
           start: function (event, ui) {
             $(this).addClass('dragging');
-        
-           
-                
-
+            // $(document).find('.sha_imgeOverflow').css('display','block');
+            // $(document).find('.sha_imgeOverflow').css('overflow','hidden');
           },
           stop: function (event, ui) {
             $(this).removeClass('dragging');
             $(this).css({ top: 0, left: 0 });
-         
+           
           }
         });
       
@@ -521,7 +519,7 @@ button.addEventListener('click', function() {
             // $(this).append(droppedElement);
             $(this).find('.elementBtnWrap').before(droppedElement);
  
-            
+           
             // Adjust the height of the container if needed
             var boxWarpHeight = $(this).outerHeight();
             var boxHeight = droppedElement.outerHeight();
