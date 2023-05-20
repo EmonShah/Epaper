@@ -97,7 +97,12 @@ body {
 .sha-inputVal label {
   width: 50%;
 }
-
+ #dynamicInput, #submitButton {
+  width: 10%;
+  padding: 6px 10px;
+  margin: 0 5px;
+}
+ 
 label,
 input {
   font-size: 13px;

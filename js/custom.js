@@ -105,8 +105,7 @@ button.addEventListener('click', function() {
       navigatorDropdown('.sha-sizeToggoler svg', '.sha-fontWrap');
       navigatorDropdown('.sha-familyToggoler svg', '.shah-familyWrap');
   
-    
-   
+
       
   
       $(document).on('dblclick touchstart', 'p, img, h1, h2, .sha-divider, .sha_draggable, .sha_htmlContent', function () {
@@ -128,6 +127,16 @@ button.addEventListener('click', function() {
           $('#sha-htmlContent').val(docHtml);
   
         }
+
+   
+         //html input type color set here
+         var colorPicker1 = document.querySelector('#sha_bg_color');
+         var colorPicker2 = document.querySelector('#sha_text_color');
+ 
+         colorPicker1.value = colorPicker1.defaultValue;
+       
+         colorPicker2.value = colorPicker2.defaultValue;
+   
   
         $('.sha-formSubmit').off('click').on('click', function () {
           // only apply changes to the p or img element with the "select" class
@@ -141,10 +150,18 @@ button.addEventListener('click', function() {
             var textAlign = $('#align_select').val() || '';
             var textDecoration = $('#text_decoration').val() || ''; 
             var floatAlign = $('#floatAlign').val() || ''; 
-            var bgColor = $('#sha_bg_color').val() || '';
-             
+ 
+            var bgColorVl = $('#sha_bg_color').attr('value') || ''; 
+            var bgColor = $('#sha_bg_color').val() || ''; 
+            bgColor = (bgColor === bgColorVl) ? '' : $('#sha_bg_color').val();
+
+          
+            var bgColorV2 = $('#sha_text_color').attr('value') || ''; 
             var color = $('#sha_text_color').val() || '';
-      
+       
+             color = (color === bgColorV2) ? '': $('#sha_text_color').val();
+ 
+ 
             var borderRadius = $('#sha_border_radius').val() || '';
             var fontSize = $('#sha_fontSize').val() || '';
             var lineHeight = $('#sha_lineHeight').val() || '';
@@ -166,9 +183,6 @@ button.addEventListener('click', function() {
               if (textDecoration) { $this.css('text-decoration', textDecoration) }; 
               if (floatAlign) { $this.css('float', floatAlign) }; 
               if (bgColor) { $this.css('background-color', bgColor) }; 
-            
-              
-              console.log(bgColor)
               if (color) { $this.css('color', color) };
               if (borderRadius) { $this.css('border-radius', borderRadius) };
               if (fontSize) { $this.css('font-size', fontSize) };
@@ -183,7 +197,22 @@ button.addEventListener('click', function() {
       });
  
 
-  
+  // color convert 
+     // Helper function to convert RGB color value to hex format
+     function rgbToHex(colorValue) {
+      // Remove whitespace and convert the color value to an array of RGB values
+      var rgbValues = colorValue.replace(/\s/g, '').match(/\d+/g);
+    
+      // Convert the RGB values to hex format
+      var hexColor = '#' + rgbValues.map(function(value) {
+        var hex = parseInt(value).toString(16);
+        return hex.length === 1 ? "0" + hex : hex;
+      }).join('');
+    
+      return hexColor;
+    }
+    
+
 
 
 
@@ -536,3 +565,51 @@ button.addEventListener('click', function() {
       saveRestorBtn('display', 'flex', 'none', '.elementBtnWrap');
       saveRestorBtn('display', 'block', 'none', '.shaGap');
   
+
+
+      function parentBorder(a) {
+        // Check if the input element already exists
+        var input = document.getElementById("dynamicInput");
+        
+        // Check if the submit button already exists
+        var submitBtn = document.getElementById("submitButton");
+        
+        // If both input and submit button exist, hide them and remove them from the DOM
+        if (input && submitBtn) {
+            input.style.display = "none";
+            input.parentNode.removeChild(input);
+            
+            submitBtn.style.display = "none";
+            submitBtn.parentNode.removeChild(submitBtn);
+        } else {
+            // Create a new input element
+            input = document.createElement("input");
+            input.id = "dynamicInput";
+            input.type = "text";
+            input.placeholder = "1px solid silver";
+            input.className = "custom-input";
+            
+            // Create a new submit button
+            submitBtn = document.createElement("input");
+            submitBtn.id = "submitButton";
+            submitBtn.type = "submit";
+            submitBtn.value = "Submit";
+            
+            // Append the input element and submit button to a parent container (e.g., body)
+            a.before(input);
+            a.before(submitBtn);
+            
+            // Add a click event listener to the submit button
+            submitBtn.addEventListener("click", function() {
+                parentBorder();
+                var inputValue = input.value;
+                $('#sha_Content').css('border',inputValue);
+
+            });
+        }
+    }
+    
+    $(document).on('click', '#parentBorder', function() {
+        parentBorder(this);
+    });
+    
