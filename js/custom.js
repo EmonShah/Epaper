@@ -149,7 +149,7 @@ button.addEventListener('click', function() {
         $('.sha-formSubmit').off('click').on('click', function () {
           // only apply changes to the p or img element with the "select" class
           if ($this.hasClass('select')) {
-            var addClassName = $('#sha_addClass').val() || ''; 
+             
             var htmlContent = $('#sha-htmlContent').val() || '';
             var widthValue = $('#sha_width').val() || '';
             var heightValue = $('#sha_height').val() || '';
@@ -180,9 +180,9 @@ button.addEventListener('click', function() {
   
   
             // Check if any input field has a defined value
-            if (addClassName || htmlContent || widthValue || heightValue || marginValue || paddingValue || textIndent || textAlign || textDecoration || floatAlign || bgColor || color || borderRadius || fontSize || lineHeight || fontFamily || gbfontFamily || fontWeight) {
+            if (  htmlContent || widthValue || heightValue || marginValue || paddingValue || textIndent || textAlign || textDecoration || floatAlign || bgColor || color || borderRadius || fontSize || lineHeight || fontFamily || gbfontFamily || fontWeight) {
               // Set CSS styles
-              if (addClassName) $this.addClass(addClassName);
+            
               if (htmlContent) $this.html(htmlContent);
               if (widthValue) $this.css('width', widthValue);
               if (heightValue) $this.css('height', heightValue);
