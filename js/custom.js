@@ -19,8 +19,8 @@ $(document).ready(function () {
       }
     });
   });
-  
-  
+
+ 
   
   //reset button here
 
@@ -54,7 +54,7 @@ button.addEventListener('click', function() {
 });
 
   
-  
+ 
   
    //image height width control form zoom in zoom out
    var initialScale = 1;
@@ -110,6 +110,8 @@ button.addEventListener('click', function() {
   
       $(document).on('dblclick touchstart', 'p, img, h1, h2, .sha-divider, .sha_draggable, .sha_htmlContent', function () {
         var $this = $(this);
+       
+       
   
         // toggle "select" class on the clicked element
         $this.toggleClass('select');
@@ -127,6 +129,12 @@ button.addEventListener('click', function() {
           $('#sha-htmlContent').val(docHtml);
   
         }
+      
+          
+       
+          
+     
+        
 
    
          //html input type color set here
@@ -141,6 +149,7 @@ button.addEventListener('click', function() {
         $('.sha-formSubmit').off('click').on('click', function () {
           // only apply changes to the p or img element with the "select" class
           if ($this.hasClass('select')) {
+            var addClassName = $('#sha_addClass').val() || ''; 
             var htmlContent = $('#sha-htmlContent').val() || '';
             var widthValue = $('#sha_width').val() || '';
             var heightValue = $('#sha_height').val() || '';
@@ -171,8 +180,9 @@ button.addEventListener('click', function() {
   
   
             // Check if any input field has a defined value
-            if (htmlContent || widthValue || heightValue || marginValue || paddingValue || textIndent || textAlign || textDecoration || floatAlign || bgColor || color || borderRadius || fontSize || lineHeight || fontFamily || gbfontFamily || fontWeight) {
+            if (addClassName || htmlContent || widthValue || heightValue || marginValue || paddingValue || textIndent || textAlign || textDecoration || floatAlign || bgColor || color || borderRadius || fontSize || lineHeight || fontFamily || gbfontFamily || fontWeight) {
               // Set CSS styles
+              if (addClassName) $this.addClass(addClassName);
               if (htmlContent) $this.html(htmlContent);
               if (widthValue) $this.css('width', widthValue);
               if (heightValue) $this.css('height', heightValue);
@@ -191,30 +201,20 @@ button.addEventListener('click', function() {
               if (fontFamily) { $this.css('font-family', fontFamily) };
               if (fontWeight) { $this.css('font-weight', fontWeight) };
             }
+
+         
           }
+ 
+               
+   
         });
          
       });
  
 
-  // color convert 
-     // Helper function to convert RGB color value to hex format
-     function rgbToHex(colorValue) {
-      // Remove whitespace and convert the color value to an array of RGB values
-      var rgbValues = colorValue.replace(/\s/g, '').match(/\d+/g);
-    
-      // Convert the RGB values to hex format
-      var hexColor = '#' + rgbValues.map(function(value) {
-        var hex = parseInt(value).toString(16);
-        return hex.length === 1 ? "0" + hex : hex;
-      }).join('');
-    
-      return hexColor;
-    }
-    
-
-
-
+ 
+  
+   
 
       $(document).on('click', '.shaClgBtn', '#saveBtn', function () {
         $('p.select, img.select, h1.select, h2.select, span.select, div').removeClass('select');
@@ -474,63 +474,66 @@ button.addEventListener('click', function() {
     });
    
   
+ 
+            // inner Section drag drop section
+            $(document).on('click touchstart', '.sha-elementBtn', function () {
+              $('.box').draggable({
+                revert: 'invalid',
+                cursor: 'move',
+                start: function (event, ui) {
+                  $(this).addClass('dragging');
+                  
+                },
+                stop: function (event, ui) {
+                  $(this).removeClass('dragging');
+                  $(this).css({ top: 0, left: 0 });
+               
+        
+                }
+              });
+            
+              $('.boxWarp').droppable({
+                accept: '.box',
+                drop: function (event, ui) {
+                  var droppedElement = ui.draggable;
+                  var droppedParent = droppedElement.parent('.boxWarp');
+                  
+                  // Check if the dropped element is coming from the same container
+                  if (droppedParent.is($(this))) {
+                    return; // No need to perform further actions
+                  }
+                  
+                  // Reset the position of the dropped element
+                  droppedElement.css({ top: 0, left: 0 });
+                  
+                  // Detach the dropped element from its current parent
+                   droppedElement.detach();
+                  var  mainChild = $(this).parent().attr('id');
+                   if(mainChild == "capture"){
+                    $(this).find('.elementBtnWrap').before(droppedElement);
+                   }else{
+                    $(this).append(droppedElement);
+                   }
+                  
+                  // $(this).append(droppedElement);
+                  $(this).find('.elementBtnWrap').before(droppedElement);
+       
+                 
+                  // Adjust the height of the container if needed
+                  var boxWarpHeight = $(this).outerHeight();
+                  var boxHeight = droppedElement.outerHeight();
+                  if (boxWarpHeight < boxHeight) {
+                    $(this).css('height', boxHeight);
+                  }
+                }
+              });
+            });
+            
+ 
 
+  
  
-      // inner Section drag drop section
-       $(document).on('click touchstart', '.sha-elementBtn', function () {
-        $('.box').draggable({
-          revert: 'invalid',
-          cursor: 'move',
-          start: function (event, ui) {
-            $(this).addClass('dragging');
-            // $(document).find('.sha_imgeOverflow').css('display','block');
-            // $(document).find('.sha_imgeOverflow').css('overflow','hidden');
-          },
-          stop: function (event, ui) {
-            $(this).removeClass('dragging');
-            $(this).css({ top: 0, left: 0 });
-           
-          }
-        });
-      
-        $('.boxWarp').droppable({
-          accept: '.box',
-          drop: function (event, ui) {
-            var droppedElement = ui.draggable;
-            var droppedParent = droppedElement.parent('.boxWarp');
-            
-            // Check if the dropped element is coming from the same container
-            if (droppedParent.is($(this))) {
-              return; // No need to perform further actions
-            }
-            
-            // Reset the position of the dropped element
-            droppedElement.css({ top: 0, left: 0 });
-            
-            // Detach the dropped element from its current parent
-             droppedElement.detach();
-            var  mainChild = $(this).parent().attr('id');
-             if(mainChild == "capture"){
-              $(this).find('.elementBtnWrap').before(droppedElement);
-             }else{
-              $(this).append(droppedElement);
-             }
-            
-            // $(this).append(droppedElement);
-            $(this).find('.elementBtnWrap').before(droppedElement);
- 
-           
-            // Adjust the height of the container if needed
-            var boxWarpHeight = $(this).outerHeight();
-            var boxHeight = droppedElement.outerHeight();
-            if (boxWarpHeight < boxHeight) {
-              $(this).css('height', boxHeight);
-            }
-          }
-        });
-      });
-      
- 
+
       
       // save button action here
   
