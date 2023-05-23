@@ -439,7 +439,7 @@ button.addEventListener('click', function() {
         $(this).parents('.elementBtnWrap').before(' <h2 class="box">Title Content</h2>');
       })
       $(document).on('click', '.sha-add-content', function () {
-        $(this).parents('.elementBtnWrap').before('<p class="box">Content</p>');
+        $(this).parents('.elementBtnWrap').before('<p class="box ">Content</p>');
       })
    
       $(document).on('click', '.sha-add-divider', function () {
@@ -473,9 +473,14 @@ button.addEventListener('click', function() {
       $('.sha_htmlContent').draggable();
     });
    
+
+ 
+  
   
  
             // inner Section drag drop section
+
+
             $(document).on('click touchstart', '.sha-elementBtn', function () {
               $('.box').draggable({
                 revert: 'invalid',
@@ -491,7 +496,9 @@ button.addEventListener('click', function() {
         
                 }
               });
-            
+ 
+
+           
               $('.boxWarp').droppable({
                 accept: '.box',
                 drop: function (event, ui) {
@@ -512,7 +519,7 @@ button.addEventListener('click', function() {
                    if(mainChild == "capture"){
                     $(this).find('.elementBtnWrap').before(droppedElement);
                    }else{
-                    $(this).append(droppedElement);
+                    $(this).append(droppedElement); 
                    }
                   
                   // $(this).append(droppedElement);
