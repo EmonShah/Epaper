@@ -251,7 +251,7 @@ svg {
   display: none;
 }
 
-.sha-title *{
+.titleBox{
   text-align: center;
 }
 .sha-title {

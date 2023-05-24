@@ -502,9 +502,7 @@ button.addEventListener('click', function() {
                 accept: '.box',
                 drop: function (event, ui) {
                   var droppedElement = ui.draggable;
-                  var droppedParent = droppedElement.parent('.boxWarp');
-                  
-                
+                   
                    droppedElement.css({ top: 0, left: 0 });
                   
                   // Detach the dropped element from its current parent
