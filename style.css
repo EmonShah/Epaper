@@ -1,7 +1,7 @@
  
 @font-face {
   font-family: 'SutonnyMJ';
-  src: url('fonts/SutonnyMJ\ Regular.ttf') format('truetype');
+  src: url('fonts/SutonnyMJ.woff2') format('truetype');
 }
 @font-face {
   font-family: 'SolaimanLipi';
@@ -97,7 +97,12 @@ body {
 .sha-inputVal label {
   width: 50%;
 }
-
+ #dynamicInput, #submitButton {
+  width: 10%;
+  padding: 6px 10px;
+  margin: 0 5px;
+}
+ 
 label,
 input {
   font-size: 13px;
@@ -117,10 +122,12 @@ select:focus {
 input[type="color"]{
   height: 80px;
 }
-
-p, h2{
+p{
+  font-size: 25px;
+}
+p, h2,h1{
   text-align: justify ;
-   
+  z-index: 111; 
 }
  
 .sha-formSubmit {
@@ -152,7 +159,6 @@ padding: 0;
   gap: 20px;
   border: 3px solid #007bff;
   position: relative;
-  margin-top: 10px;
 }
 
 .columnEdit {
@@ -176,11 +182,12 @@ padding: 0;
 }
 
 .sha_item img {
-  float: left;
-  margin-right: 15px;
-  margin-bottom: 15px;
+ padding: 10px;
+ overflow: hidden;
+ object-fit: cover;
+ box-sizing: border-box;
 }
-
+ 
 .sha_item {
   border: 2px solid #007bff;
   margin: 5px;
@@ -191,6 +198,7 @@ svg {
   width: 20px;
   height: auto;
 }
+
 
 .sha-width,
 .sha-aligin,
@@ -229,7 +237,13 @@ svg {
 
 .select {
   border: 2px solid #03a9f4;
+ padding: 5px;
  
+}
+.sha_imgeOverflow {
+  overflow: hidden;
+  display: inline;
+  z-index: 112;
 }
 
 #sha_columnNumber,
@@ -237,8 +251,10 @@ svg {
   display: none;
 }
 
+.titleBox{
+  text-align: center;
+}
 .sha-title {
-  
   text-align: center;
   font-size: 22px;
   margin: auto;
@@ -248,6 +264,7 @@ svg {
   text-align: center;
   font-size: 60px;
   font-weight: 600;
+  line-height: 75px;
   
 }
 
@@ -394,10 +411,7 @@ height: 30px;
   align-items: center;
 }
 
-.sha_imgeOverflow {
-overflow: hidden;
-display: inline;
-}
+ 
 .dbtnStyle{
 padding: 5px 10px;
 cursor: pointer;
@@ -419,3 +433,5 @@ align-items: center;
 .button-clicked {
   animation: buttonClickAnimation 0.3s;
 }
+
+ 

@@ -15,7 +15,7 @@
   <script src="cndJs/html2canvas.js"></script>
   <script src="cndJs/jqueryMoba.js"  ></script>
   <script src="cndJs/html2pdf.js"></script>
-   
+ 
  
 
   <link rel="stylesheet" href="style.css">
@@ -30,6 +30,7 @@
       <div class="shaClgBtn">x</div>
     </div>
     <div class="navigatorWrap">
+ 
       <div class="sha-content">Content Section
         <span class="sha-dropdown sha-contentToggoler"><svg xmlns="http://www.w3.org/2000/svg" version="1.1"
             xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512"
@@ -132,7 +133,7 @@
             </g>
           </svg></span>
         <div class="sha-colorWrap">
-          <input type="color" id="sha_bg_color" name="sha_bg_color">
+          <input type="color" id="sha_bg_color"  value="#62818f">
           <input type="text" id="sha_border_radius" placeholder="Border Radius">
         </div>
       </div>
@@ -149,7 +150,7 @@
           </svg></span>
         <div class="sha-textColorWrap">
         
-          <input type="color" id="sha_text_color" value="#ff0000">
+          <input type="color" id="sha_text_color"  value="#62818f" >
         
         </div>
       </div>
@@ -204,8 +205,10 @@
 
   <div class="container">
     <div id="sha_Content">
-      <h2 class="sha-title boxWarp">Add Title</h2>
-      <h1 class="shah-largTitle">Add Heading</h1>
+      <div class="titleBox boxWarp">
+        <h2 class="sha-title">Add Title</h2>
+      </div>
+      <h1 class="shah-largTitle ">Add Heading</h1>
       <div id="capture">
         <span class="columnEdit"><span class="sha-clmEdtBtn">Edit Columns</span>
           <input type="text" id="sha_columnNumber" placeholder="1fr 1fr 1fr">
@@ -230,7 +233,7 @@
   
     <div class="downloadBtnSection">
       <button class="btnStyle" id="saveBtn">Save</button>
-      <button class="btnStyle" id="undoButton">Undo</button>
+      <button class="btnStyle" id="parentBorder">Border</button>
       <button class="btnStyle" id="restoreBtn">Edit</button>
       <button class="btnStyle" id="resetBtn">Reset</button>
       <div class="downloadBtn">
@@ -242,7 +245,18 @@
   
   </div>
 
+ 
  <script src="js/custom.js"></script>
+ <script>
+  // $('.sha_item').sortable({
+  //     items: '.box',
+  //     containment: '.sha_item',
+  //     cursor: 'move',
+  //     revert: true
+  //   });
+  
+
+ </script>
 </body>
 
 </html>

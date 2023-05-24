@@ -19,8 +19,8 @@ $(document).ready(function () {
       }
     });
   });
-  
-  
+
+ 
   
   //reset button here
 
@@ -54,7 +54,7 @@ button.addEventListener('click', function() {
 });
 
   
-  
+ 
   
    //image height width control form zoom in zoom out
    var initialScale = 1;
@@ -105,12 +105,13 @@ button.addEventListener('click', function() {
       navigatorDropdown('.sha-sizeToggoler svg', '.sha-fontWrap');
       navigatorDropdown('.sha-familyToggoler svg', '.shah-familyWrap');
   
-    
-   
+
       
   
       $(document).on('dblclick touchstart', 'p, img, h1, h2, .sha-divider, .sha_draggable, .sha_htmlContent', function () {
         var $this = $(this);
+       
+       
   
         // toggle "select" class on the clicked element
         $this.toggleClass('select');
@@ -128,10 +129,27 @@ button.addEventListener('click', function() {
           $('#sha-htmlContent').val(docHtml);
   
         }
+      
+          
+       
+          
+     
+        
+
+   
+         //html input type color set here
+         var colorPicker1 = document.querySelector('#sha_bg_color');
+         var colorPicker2 = document.querySelector('#sha_text_color');
+ 
+         colorPicker1.value = colorPicker1.defaultValue;
+       
+         colorPicker2.value = colorPicker2.defaultValue;
+   
   
         $('.sha-formSubmit').off('click').on('click', function () {
           // only apply changes to the p or img element with the "select" class
           if ($this.hasClass('select')) {
+             
             var htmlContent = $('#sha-htmlContent').val() || '';
             var widthValue = $('#sha_width').val() || '';
             var heightValue = $('#sha_height').val() || '';
@@ -141,10 +159,18 @@ button.addEventListener('click', function() {
             var textAlign = $('#align_select').val() || '';
             var textDecoration = $('#text_decoration').val() || ''; 
             var floatAlign = $('#floatAlign').val() || ''; 
-            var bgColor = $('#sha_bg_color').val() || '';
-             
+ 
+            var bgColorVl = $('#sha_bg_color').attr('value') || ''; 
+            var bgColor = $('#sha_bg_color').val() || ''; 
+            bgColor = (bgColor === bgColorVl) ? '' : $('#sha_bg_color').val();
+
+          
+            var bgColorV2 = $('#sha_text_color').attr('value') || ''; 
             var color = $('#sha_text_color').val() || '';
-      
+       
+             color = (color === bgColorV2) ? '': $('#sha_text_color').val();
+ 
+ 
             var borderRadius = $('#sha_border_radius').val() || '';
             var fontSize = $('#sha_fontSize').val() || '';
             var lineHeight = $('#sha_lineHeight').val() || '';
@@ -154,8 +180,9 @@ button.addEventListener('click', function() {
   
   
             // Check if any input field has a defined value
-            if (htmlContent || widthValue || heightValue || marginValue || paddingValue || textIndent || textAlign || textDecoration || floatAlign || bgColor || color || borderRadius || fontSize || lineHeight || fontFamily || gbfontFamily || fontWeight) {
+            if (  htmlContent || widthValue || heightValue || marginValue || paddingValue || textIndent || textAlign || textDecoration || floatAlign || bgColor || color || borderRadius || fontSize || lineHeight || fontFamily || gbfontFamily || fontWeight) {
               // Set CSS styles
+            
               if (htmlContent) $this.html(htmlContent);
               if (widthValue) $this.css('width', widthValue);
               if (heightValue) $this.css('height', heightValue);
@@ -166,9 +193,6 @@ button.addEventListener('click', function() {
               if (textDecoration) { $this.css('text-decoration', textDecoration) }; 
               if (floatAlign) { $this.css('float', floatAlign) }; 
               if (bgColor) { $this.css('background-color', bgColor) }; 
-            
-              
-              console.log(bgColor)
               if (color) { $this.css('color', color) };
               if (borderRadius) { $this.css('border-radius', borderRadius) };
               if (fontSize) { $this.css('font-size', fontSize) };
@@ -177,15 +201,20 @@ button.addEventListener('click', function() {
               if (fontFamily) { $this.css('font-family', fontFamily) };
               if (fontWeight) { $this.css('font-weight', fontWeight) };
             }
+
+         
           }
+ 
+               
+   
         });
          
       });
  
 
+ 
   
-
-
+   
 
       $(document).on('click', '.shaClgBtn', '#saveBtn', function () {
         $('p.select, img.select, h1.select, h2.select, span.select, div').removeClass('select');
@@ -410,7 +439,7 @@ button.addEventListener('click', function() {
         $(this).parents('.elementBtnWrap').before(' <h2 class="box">Title Content</h2>');
       })
       $(document).on('click', '.sha-add-content', function () {
-        $(this).parents('.elementBtnWrap').before('<p class="box">Content</p>');
+        $(this).parents('.elementBtnWrap').before('<p class="box ">Content</p>');
       })
    
       $(document).on('click', '.sha-add-divider', function () {
@@ -444,66 +473,66 @@ button.addEventListener('click', function() {
       $('.sha_htmlContent').draggable();
     });
    
+
+ 
   
-
+  
  
-      // inner Section drag drop section
-       $(document).on('click', '.sha-elementBtn', function () {
-        $('.box').draggable({
-          revert: 'invalid',
-          cursor: 'move',
-          start: function (event, ui) {
-            $(this).addClass('dragging');
-        
+            // inner Section drag drop section
+
+
+            $(document).on('click touchstart', '.sha-elementBtn', function () {
+              $('.box').draggable({
+                revert: 'invalid',
+                cursor: 'move',
+                start: function (event, ui) {
+                  $(this).addClass('dragging');
+                  
+                },
+                stop: function (event, ui) {
+                  $(this).removeClass('dragging');
+                  $(this).css({ top: 0, left: 0 });
+                 
+                }
+              });
+ 
+
            
-                
+              $('.boxWarp').droppable({
+                accept: '.box',
+                drop: function (event, ui) {
+                  var droppedElement = ui.draggable;
+                   
+                   droppedElement.css({ top: 0, left: 0 });
+                  
+                  // Detach the dropped element from its current parent
+                   droppedElement.detach();
+                  var  mainChild = $(this).parent().attr('id');
+                   if(mainChild == "capture"){
+                 $(this).find('.elementBtnWrap').before(droppedElement);
+            
+  
+                   }else{
+                    $(this).append(droppedElement); 
+                   }
+        
+ 
+        
+                  // Adjust the height of the container if needed
+                  var boxWarpHeight = $(this).outerHeight();
+                  var boxHeight = droppedElement.outerHeight();
+                  if (boxWarpHeight < boxHeight) {
+                    $(this).css('height', boxHeight);
+                  }
+                }
+              });
+            });
+            
+ 
 
-          },
-          stop: function (event, ui) {
-            $(this).removeClass('dragging');
-            $(this).css({ top: 0, left: 0 });
-         
-          }
-        });
-      
-        $('.boxWarp').droppable({
-          accept: '.box',
-          drop: function (event, ui) {
-            var droppedElement = ui.draggable;
-            var droppedParent = droppedElement.parent('.boxWarp');
-            
-            // Check if the dropped element is coming from the same container
-            if (droppedParent.is($(this))) {
-              return; // No need to perform further actions
-            }
-            
-            // Reset the position of the dropped element
-            droppedElement.css({ top: 0, left: 0 });
-            
-            // Detach the dropped element from its current parent
-             droppedElement.detach();
-            var  mainChild = $(this).parent().attr('id');
-             if(mainChild == "capture"){
-              $(this).find('.elementBtnWrap').before(droppedElement);
-             }else{
-              $(this).append(droppedElement);
-             }
-            
-            // $(this).append(droppedElement);
-            $(this).find('.elementBtnWrap').before(droppedElement);
+  
  
-            
-            // Adjust the height of the container if needed
-            var boxWarpHeight = $(this).outerHeight();
-            var boxHeight = droppedElement.outerHeight();
-            if (boxWarpHeight < boxHeight) {
-              $(this).css('height', boxHeight);
-            }
-          }
-        });
-      });
-      
- 
+
       
       // save button action here
   
@@ -536,3 +565,51 @@ button.addEventListener('click', function() {
       saveRestorBtn('display', 'flex', 'none', '.elementBtnWrap');
       saveRestorBtn('display', 'block', 'none', '.shaGap');
   
+
+
+      function parentBorder(a) {
+        // Check if the input element already exists
+        var input = document.getElementById("dynamicInput");
+        
+        // Check if the submit button already exists
+        var submitBtn = document.getElementById("submitButton");
+        
+        // If both input and submit button exist, hide them and remove them from the DOM
+        if (input && submitBtn) {
+            input.style.display = "none";
+            input.parentNode.removeChild(input);
+            
+            submitBtn.style.display = "none";
+            submitBtn.parentNode.removeChild(submitBtn);
+        } else {
+            // Create a new input element
+            input = document.createElement("input");
+            input.id = "dynamicInput";
+            input.type = "text";
+            input.placeholder = "1px solid silver";
+            input.className = "custom-input";
+            
+            // Create a new submit button
+            submitBtn = document.createElement("input");
+            submitBtn.id = "submitButton";
+            submitBtn.type = "submit";
+            submitBtn.value = "Submit";
+            
+            // Append the input element and submit button to a parent container (e.g., body)
+            a.before(input);
+            a.before(submitBtn);
+            
+            // Add a click event listener to the submit button
+            submitBtn.addEventListener("click", function() {
+                parentBorder();
+                var inputValue = input.value;
+                $('#sha_Content').css('border',inputValue);
+
+            });
+        }
+    }
+    
+    $(document).on('click', '#parentBorder', function() {
+        parentBorder(this);
+    });
+    
