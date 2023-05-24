@@ -251,8 +251,10 @@ svg {
   display: none;
 }
 
+.sha-title *{
+  text-align: center;
+}
 .sha-title {
-  
   text-align: center;
   font-size: 22px;
   margin: auto;

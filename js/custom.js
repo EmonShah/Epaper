@@ -492,8 +492,7 @@ button.addEventListener('click', function() {
                 stop: function (event, ui) {
                   $(this).removeClass('dragging');
                   $(this).css({ top: 0, left: 0 });
-               
-        
+                 
                 }
               });
  
@@ -505,27 +504,22 @@ button.addEventListener('click', function() {
                   var droppedElement = ui.draggable;
                   var droppedParent = droppedElement.parent('.boxWarp');
                   
-                  // Check if the dropped element is coming from the same container
-                  if (droppedParent.is($(this))) {
-                    return; // No need to perform further actions
-                  }
-                  
-                  // Reset the position of the dropped element
-                  droppedElement.css({ top: 0, left: 0 });
+                
+                   droppedElement.css({ top: 0, left: 0 });
                   
                   // Detach the dropped element from its current parent
                    droppedElement.detach();
                   var  mainChild = $(this).parent().attr('id');
                    if(mainChild == "capture"){
-                    $(this).find('.elementBtnWrap').before(droppedElement);
+                 $(this).find('.elementBtnWrap').before(droppedElement);
+            
+  
                    }else{
                     $(this).append(droppedElement); 
                    }
-                  
-                  // $(this).append(droppedElement);
-                  $(this).find('.elementBtnWrap').before(droppedElement);
-       
-                 
+        
+ 
+        
                   // Adjust the height of the container if needed
                   var boxWarpHeight = $(this).outerHeight();
                   var boxHeight = droppedElement.outerHeight();
