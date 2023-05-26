@@ -104,9 +104,9 @@ body {
 }
  
 label,
-input {
-  font-size: 13px;
-  width: 90%;
+#sha_columnBtn,
+.clmnEditApply{
+ padding: 2px 5px;
 }
 
 select {

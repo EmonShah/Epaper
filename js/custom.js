@@ -290,7 +290,7 @@ button.addEventListener('click', function() {
   
           $(c).css('grid-template-columns',  columnNmbr, ',1fr)');
           $(this).hide();
-          $(b).hide();
+            $(b).hide();
           columnNmbr = null;
   
         });
