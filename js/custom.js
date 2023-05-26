@@ -644,7 +644,7 @@ button.addEventListener('click', function() {
             submitBtn.addEventListener("click", function() {
                 parentBorder();
                 var inputValue = input.value;
-                $('#sha_Content').css('border',inputValue);
+                $('.sha_wrapper').css('border',inputValue);
 
             });
         }

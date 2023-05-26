@@ -33,8 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
       pagebreak: { mode: 'avoid-all' }
     };
 
-    // Modify the page size
-    opt.jsPDF.format = 'a3'; // Change to 'a3' for larger page size
+    
 
     html2pdf().set(opt).from(element).save();
   });
