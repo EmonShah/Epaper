@@ -19,7 +19,6 @@ $(document).ready(function () {
       }
     });
   });
-
  
   
   //reset button here
@@ -184,14 +183,24 @@ button.addEventListener('click', function() {
               // Set CSS styles
             
               if (htmlContent) $this.html(htmlContent);
-              if (widthValue) $this.css('width', widthValue);
-              if (heightValue) $this.css('height', heightValue);
+             
+              var  find_img  = $this[0].src;
+              if(find_img){
+                if (widthValue) $this.parent().css('width', widthValue); 
+                if (heightValue) $this.parent().css('height', heightValue);
+                
+              }else{
+                if (widthValue) $this.css('width', widthValue); 
+                if (heightValue) $this.css('height', heightValue);
+              }
+             
+              
               if (marginValue) $this.css('margin', marginValue);
               if (paddingValue) $this.css('padding', paddingValue);
               if (textIndent) $this.css('text-indent', textIndent);
               if (textAlign) { $this.css('text-align', textAlign) };
               if (textDecoration) { $this.css('text-decoration', textDecoration) }; 
-              if (floatAlign) { $this.css('float', floatAlign) }; 
+              if (floatAlign) { $this.parent().css('float', floatAlign) }; 
               if (bgColor) { $this.css('background-color', bgColor) }; 
               if (color) { $this.css('color', color) };
               if (borderRadius) { $this.css('border-radius', borderRadius) };
@@ -313,6 +322,8 @@ button.addEventListener('click', function() {
   
         $element.find('.elementBtnWrap').append('<input type="file" name="fileToUpload" id="fileToUpload">');
         $element.find('.elementBtnWrap').append('<label for="fileToUpload" class="sha-elementBtn" id="file-upload-label">Add Image</label>');
+        $element.find('.elementBtnWrap').append('<input type="file" name="imgCenter" id="imgCenter">');
+        $element.find('.elementBtnWrap').append('<label for="imgCenter" class="sha-elementBtn" id="imagePosition">Center Image</label>');
         $element.find('.elementBtnWrap').append('<button class="sha-elementBtn sha-add-title">Add Title</button>');
         $element.find('.elementBtnWrap').append('<button class="sha-elementBtn sha-add-content">Add Content</button>');
         $element.find('.elementBtnWrap').append('<button class="sha-elementBtn sha-add-innerSection">Inner Section</button>');
@@ -330,12 +341,20 @@ button.addEventListener('click', function() {
         $(this).parents('.elementBtnWrap').before('<div id="image_container" class="box sha_imgeOverflow"></div>')
   
       });
+      $(document).on('click', '#imagePosition', function () {
+  
+        //$(this).parents('.elementBtnWrap').before('<div id="image_cetner" class="move"></div>')
+        $('#sha_Content').append('<div id="image_cetner" class="move"></div>')
+  
+      });
   
       //image upload and print section;
   
      // attach a change handler to the file input
-  $(document).on('change', '#fileToUpload', function () {
-    // loop through all the selected files
+  $(document).on('change', '#fileToUpload, #imgCenter', function () {
+    // loop through all the selected files 
+     var sha_applyElement = '';
+        sha_applyElement = this.id;
     for (let i = 0; i < this.files.length; i++) {
       // get the current file object
       const file = this.files[i];
@@ -353,17 +372,27 @@ button.addEventListener('click', function() {
   
         // display the image in an <img> element
         const img = $('<img>');
-        img.attr('height', 'auto');
+        img.attr('height', '100%');
         img.attr('width', '100%');
         img.attr('src', 'data:image/png;base64,' + encodedImage);
        
         // append the image element to the container
-        
-        $('#image_container').append(img);
+ 
+          if(sha_applyElement == "fileToUpload"){
+              $('#image_container').append(img);
+              const containerId = 'image_container_' + Math.floor(Math.random() * 1000); // generate a unique id
+              $('#image_container').attr('id', containerId);
+              
+          }
+          else if(sha_applyElement == "imgCenter"){
+            $('#image_cetner').append(img);
+            const containerId = 'image_cetner_' + Math.floor(Math.random() * 1000); // generate a unique id
+            $('#image_cetner').attr('id', containerId);
+            
+          }
+       
   
-        const containerId = 'image_container_' + Math.floor(Math.random() * 1000); // generate a unique id
-        $('#image_container').attr('id', containerId);
-        img.parent().addClass('imgLeft');
+      
       };
    
       
@@ -471,9 +500,21 @@ button.addEventListener('click', function() {
       $(document).on('click', '.sha-elementBtn', function () {
       $('.sha_draggable').draggable();
       $('.sha_htmlContent').draggable();
+      $('.move').draggable();
     });
-   
 
+
+    $(document).ready(function() {
+      // Function to handle the click event on the button
+      $(document).on('click', '.sha-elementBtn', function() {
+        $('.move img').each(function() {
+           $(this).draggable();
+        });
+      });
+    });
+
+
+  
  
   
   

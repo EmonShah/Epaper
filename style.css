@@ -188,6 +188,9 @@ padding: 0;
  box-sizing: border-box;
 }
  
+ img{
+  object-fit: cover;
+ }
 .sha_item {
   border: 2px solid #007bff;
   margin: 5px;
@@ -242,7 +245,6 @@ svg {
 }
 .sha_imgeOverflow {
   overflow: hidden;
-  display: inline;
   z-index: 112;
 }
 
@@ -292,7 +294,12 @@ svg {
   cursor: pointer;
 }
 
+.move{
+   z-index: 115;
+}
+
 #fileToUpload,
+#imgCenter,
 #sha_clmgNumber,
 .clmnEditApply,
 #sha_innerclmgNumber,
@@ -302,8 +309,8 @@ svg {
   display: none;
 }
  
- 
-label#file-upload-label {
+ #file-upload-label,
+ #imagePosition {
   width: max-content;
 }
 
