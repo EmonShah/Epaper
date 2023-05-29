@@ -1,8 +1,23 @@
- 
 @font-face {
-  font-family: 'SutonnyMJ';
-  src: url('fonts/SutonnyMJ.woff2') format('truetype');
+  font-family: "Shurjo";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/ShurjoWeb_400.woff2') format('woff2'),
+       url('fonts/ShurjoWeb_400.woff') format("woff"),
+       url('fonts/ShurjoWeb_400.ttf') format("truetype");
 }
+@font-face {
+  font-family: "Shurjo";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+  src: url('fonts/ShurjoWeb_700.woff2') format('woff2'),
+       url('fonts/ShurjoWeb_400.woff') format("woff"),
+       url(fonts/ShurjoWeb_400.ttf) format("truetype");
+}
+
+
 @font-face {
   font-family: 'SolaimanLipi';
   src: url('fonts/SolaimanLipi_29-05-06.ttf') format('truetype');
@@ -22,7 +37,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'SutonnyMJ', sans-serif;
+  font-family: 'Shurjo', sans-serif;
 }
 
 
