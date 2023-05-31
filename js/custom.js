@@ -480,7 +480,7 @@ button.addEventListener('click', function() {
       })
    
       $(document).on('click', '.htmlContent-column', function () {
-        $(this).parents('.elementBtnWrap').before('<div class="sha_htmlContent boxWarp">Html Code Support</div>');
+        $(this).parents('.elementBtnWrap').before('<div class="sha_htmlContent boxWarp"><div class="sha_Zindex">Html Code Support</div></div>');
       })
    
   
