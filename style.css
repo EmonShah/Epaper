@@ -161,10 +161,10 @@ p, h2,h1{
 margin: 10px 0;
 padding: 20px;
 }
-textarea#sha-htmlContent {
+ #sha-htmlContent {
 width: 100%;
 height: 300px;
-padding: 0;
+padding: 7px;
 }
 
 #capture {
@@ -439,11 +439,14 @@ padding: 5px 10px;
 cursor: pointer;
 }
 .sha_htmlContent{
- 
 padding: 5px;
 display: flex;
 justify-content: center;
 align-items: center;
+
+}
+.sha_Zindex{
+  z-index: 212;
 }
  
 @keyframes buttonClickAnimation {
