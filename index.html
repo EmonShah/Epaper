@@ -253,9 +253,12 @@
     //pdf file generator here
 
      
-document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
   const button = document.querySelector('#pdf');
-  button.addEventListener('click', () => {
+  button.addEventListener('click', handleButtonClick);
+  button.addEventListener('touchstart', handleButtonClick);
+
+  function handleButtonClick() {
     window.scrollTo(0, 0);
     const element = document.getElementById('sha_Content');
     const opt = {
@@ -268,32 +271,35 @@ document.addEventListener('DOMContentLoaded', function() {
       pagebreak: { mode: 'avoid-all' }
     };
 
-    
-
     html2pdf().set(opt).from(element).save();
-  });
+  }
 });
+
 
   
   
   
   //     //jpg convater here
-      window.onload = function() {
-    const button = document.querySelector('#btnCapture');
-    button.addEventListener('click', () => {
-      window.scrollTo(0, 0);
-      const element = document.getElementById('sha_Content');
-      html2canvas(element, { useCORS: true }).then(canvas => {
-        const imgData = canvas.toDataURL('image/jpeg', 1.0);
-        const a = document.createElement('a');
-        a.href = imgData;
-        a.download = 'Epaper.jpg';
-        document.body.appendChild(a);
-        a.click();
-      });
+  window.onload = function() {
+  const button = document.querySelector('#btnCapture');
+  button.addEventListener('click', handleCapture);
+  button.addEventListener('touchstart', handleCapture);
+
+  function handleCapture() {
+    window.scrollTo(0, 0);
+    const element = document.getElementById('sha_Content');
+    html2canvas(element, { useCORS: true }).then(canvas => {
+      const imgData = canvas.toDataURL('image/jpeg', 1.0);
+      const a = document.createElement('a');
+      a.href = imgData;
+      a.download = 'Epaper.jpg';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
     });
   }
-  
+};
+
 
   
   </script>
