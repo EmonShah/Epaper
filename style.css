@@ -439,9 +439,12 @@ height: 30px;
 }
 
  
-.dbtnStyle{
-padding: 5px 10px;
-cursor: pointer;
+.dbtnStyle {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: 2px solid aliceblue;
+  border-radius: 5px;
+  background: aliceblue;
 }
 .sha_htmlContent{
 padding: 5px;
