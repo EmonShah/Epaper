@@ -254,7 +254,7 @@
 
      
     document.addEventListener('DOMContentLoaded', function() {
-  const button = document.querySelector('#pdf');
+  const button = document.getElementById('#pdf');
   button.addEventListener('click', handleButtonClick);
   button.addEventListener('touchstart', handleButtonClick);
 
@@ -281,7 +281,7 @@
   
   //     //jpg convater here
   window.onload = function() {
-  const button = document.querySelector('#btnCapture');
+  const button = document.getElementById('btnCapture');
   button.addEventListener('click', handleCapture);
   button.addEventListener('touchstart', handleCapture);
 
@@ -299,6 +299,9 @@
     });
   }
 };
+
+ 
+
 
 
   
