@@ -644,7 +644,7 @@ button.addEventListener('click', function() {
             input = document.createElement("input");
             input.id = "dynamicInput";
             input.type = "text";
-            input.placeholder = "1px solid silver";
+            input.value = "1px solid red";
             input.className = "custom-input";
             
             // Create a new submit button

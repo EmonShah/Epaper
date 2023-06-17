@@ -345,7 +345,7 @@ p,h2,h1{
 .sha-innerSection {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  gap: 20px;
   border: 2px solid #007bff;
   min-height: 50px;
   padding: 5px;
