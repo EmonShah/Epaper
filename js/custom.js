@@ -468,7 +468,7 @@ button.addEventListener('click', function() {
         var $newElement = $('<div class="sha-inner-item boxWarp"><div class="sha-clmnEdit"><span class="sha-clmnEditBtn shaClmnDlt">Edit</span><input style="width:50px;" id="sha_clmgNumber" type="text" placeholder="1/2"> <button class="clmnEditApply">Apply</button></div></div>');
         // ... code to add content to the new element ...
   
-        $(".sha-innerSection").append($newElement);
+        $(this).parents(".sha-innerSection").append($newElement); 
       });
   
   
