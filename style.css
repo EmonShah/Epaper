@@ -214,7 +214,6 @@ padding: 7px;
 .sha_item {
   border: 2px solid #007bff;
   margin: 5px;
-  word-break: break-all;
 
 }
 
@@ -313,6 +312,10 @@ svg {
   border: none;
   border-radius: 3px;
   cursor: pointer;
+}
+ .btnStyle.sha-elementBtn.htmlContent-column {
+  font-size: 16px;
+  padding-bottom: 6px;
 }
 
 .move{
@@ -448,18 +451,17 @@ height: 30px;
   background: aliceblue;
 }
 .sha_htmlContent{
-overflow-wrap: break-word;
 padding: 5px;
 display: flex;
 justify-content: center;
 align-items: center;
 z-index:999;
 }
-.sha_Zindex {
-    z-index: 212;
-    margin: 0;
-    padding: 0;
-    white-space: normal;
+.sha_Zindex{
+  z-index: 212;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
 }
  
 @keyframes buttonClickAnimation {

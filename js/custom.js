@@ -347,7 +347,6 @@ button.addEventListener('click', function() {
         $element.find('.elementBtnWrap').append('<button class="sha-elementBtn sha-add-divider">Divider</button>');
         $element.find('.elementBtnWrap').append('<button class="sha-elementBtn duplicate-column">Duplicate</button>');
         $element.find('.elementBtnWrap').append('<button class="sha-elementBtn overFlow-column">Bullet Point</button>');
-        $element.find('.elementBtnWrap').append('<button class="sha-elementBtn htmlContent-column">Html Content</button>');
         $element.find('.elementBtnWrap').append('<button class="sha-elementBtn delete-column">Delete</button>');
   
   
@@ -497,7 +496,7 @@ button.addEventListener('click', function() {
       })
    
       $(document).on('click', '.htmlContent-column', function () {
-        $(this).parents('.elementBtnWrap').before('<div class="sha_htmlContent boxWarp"><div class="sha_Zindex">Html Code Support</div></div>');
+        $('body').append('<div class="sha_htmlContent boxWarp"><div class="sha_Zindex">Html Code Support</div></div>');
       })
    
   
