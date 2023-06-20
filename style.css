@@ -447,17 +447,18 @@ height: 30px;
   background: aliceblue;
 }
 .sha_htmlContent{
+overflow-wrap: break-word;
 padding: 5px;
 display: flex;
 justify-content: center;
 align-items: center;
 z-index:999;
 }
-.sha_Zindex{
-  z-index: 212;
-  margin: 0;
-  padding: 0;
-  white-space: nowrap;
+.sha_Zindex {
+    z-index: 212;
+    margin: 0;
+    padding: 0;
+    white-space: normal;
 }
  
 @keyframes buttonClickAnimation {
