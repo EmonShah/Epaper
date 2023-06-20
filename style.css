@@ -214,6 +214,7 @@ padding: 7px;
 .sha_item {
   border: 2px solid #007bff;
   margin: 5px;
+  word-break: break-all;
 
 }
 
