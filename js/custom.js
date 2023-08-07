@@ -496,7 +496,7 @@ button.addEventListener('click', function() {
       })
    
       $(document).on('click', '.htmlContent-column', function () {
-        $('body').append('<div class="sha_htmlContent boxWarp"><div class="sha_Zindex">Html Code Support</div></div>');
+        $('#sha_Content').append('<div class="sha_htmlContent boxWarp"><div class="sha_Zindex">Html Code Support</div></div>');
       })
    
   
