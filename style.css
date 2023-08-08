@@ -450,13 +450,18 @@ height: 30px;
   border-radius: 5px;
   background: aliceblue;
 }
-.sha_htmlContent{
+.sha_htmlContent {
+  width: max-content;
+  z-index: 888;
+}
+/* .sha_htmlContent{
 padding: 5px;
 display: flex;
 justify-content: center;
 align-items: center;
-z-index:999;
-}
+z-index:888;
+width: max-content;
+} */
 .sha_Zindex{
   z-index: 212;
   margin: 0;
