@@ -16,7 +16,7 @@
   <script src="cndJs/jqueryMoba.js"></script>
   <script src="cndJs/html2pdf.js"></script>
  
-  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <!-- <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script> -->
 
  
 
@@ -281,16 +281,33 @@
   
   
   //     //jpg convater here
-  window.onload = function() {
+
+ 
+
+
+window.onload = function() {
   const button = document.getElementById('btnCapture');
   button.addEventListener('click', handleCapture);
- 
 
   function handleCapture() {
     window.scrollTo(0, 0);
     const element = document.getElementById('sha_Content');
+
+    // Set the desired fixed width and calculate the corresponding height for 4:3 aspect ratio
+    const desiredWidth = 1200; // Set your desired fixed width
+    const desiredHeight = (3 / 4) * desiredWidth; // Calculate corresponding height for 4:3 aspect ratio
+
+    // Apply the fixed dimensions using CSS
+    element.style.width = `${desiredWidth}px`;
+    element.style.height = `${desiredHeight}px`;
+
     html2canvas(element, { useCORS: true }).then(canvas => {
+      // Reset dimensions after capturing
+      element.style.width = '';
+      element.style.height = '';
+
       const imgData = canvas.toDataURL('image/jpeg', 1.0);
+
       const a = document.createElement('a');
       a.href = imgData;
       a.download = 'Epaper.jpg';
@@ -301,6 +318,9 @@
   }
 };
 
+
+
+ 
  
 
 
